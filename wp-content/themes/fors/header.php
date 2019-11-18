@@ -37,7 +37,7 @@ $options = get_option( 'theme_settings' );
 
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'fors' ); ?></a>
 
-	<header class="uk-navbar-container tm-navbar-container "  uk-sticky="media: @m">
+	<header class="header "  uk-sticky="media: @m">
 		<div class="uk-container uk-container-expand">
 			<nav class="uk-navbar">
 				<div class="uk-navbar-left">
@@ -64,7 +64,7 @@ $options = get_option( 'theme_settings' );
 					wp_nav_menu( array(
 						'theme_location' => 'menu-1',
 						'menu_id'        => 'primary-menu',
-						'menu_class'		=> 'uk-navbar-nav uk-visible@m'
+						'menu_class'		=> 'header__navbar uk-visible@m'
 					) );
 					?>
 					<div class="uk-navbar-item header-phone uk-visible@s">

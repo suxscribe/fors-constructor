@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php else : ?>
 
-			<p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', __( 'Thank you. Your order has been received.', 'woocommerce' ), $order ); ?></p>
+			<!-- <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', __( 'Thank you. Your order has been received.', 'woocommerce' ), $order ); ?></p> -->
 
 			<ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
 
@@ -59,17 +59,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</li>
 				<?php endif; ?>
 
-				<li class="woocommerce-order-overview__total total">
+				<!-- <li class="woocommerce-order-overview__total total">
 					<?php _e( 'Total:', 'woocommerce' ); ?>
 					<strong><?php echo $order->get_formatted_order_total(); ?></strong>
-				</li>
+				</li> -->
 
-				<?php if ( $order->get_payment_method_title() ) : ?>
+				<?php /*if ( $order->get_payment_method_title() ) : ?>
 					<li class="woocommerce-order-overview__payment-method method">
 						<?php _e( 'Payment method:', 'woocommerce' ); ?>
 						<strong><?php echo wp_kses_post( $order->get_payment_method_title() ); ?></strong>
 					</li>
-				<?php endif; ?>
+				<?php endif;*/ ?>
 
 			</ul>
 

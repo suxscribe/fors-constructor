@@ -53,8 +53,8 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 				<?php endif; ?>
 				</div>
 
-				</div>
-				</div> <? // zrx closing divs from form-billing.php ?>
+				<!-- </div> -->
+				<!-- </div> <? // zrx closing divs from form-billing.php ?> -->
 
 		</div>
 

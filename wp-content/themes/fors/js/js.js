@@ -367,3 +367,28 @@ $( document ).ready(function() {
 	    viewport.setAttribute("content", "height=" + viewheight + "px, width=" + viewwidth + "px, initial-scale=1.0");
 	}, 300);
 });
+
+
+jQuery(document).ready(function ($) {
+
+	$(document.body).on('updated_checkout updated_shipping_method', function (event, xhr, data) {
+		$('input[name^="shipping_method"]').on('change', function () {
+			// console.log(event);
+			// console.log(xhr);
+			// console.log(data);
+
+			if ($('input[name="shipping_method[0]"]:checked').val() == 'local_pickup:2') {
+				console.log('hide');
+				$('#billing_city_field').addClass('uk-hidden');
+				$('#billing_address_1_field').addClass('uk-hidden');
+			} else {
+				$('#billing_city_field').removeClass('uk-hidden');
+				$('#billing_address_1_field').removeClass('uk-hidden');
+				//todo uk-hidden class overwritten by something
+			}
+
+
+		});
+	});
+
+});

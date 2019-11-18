@@ -936,6 +936,11 @@ section[size] {
   width: auto;
 }
 
+.badlon-slider img {
+  width: 100%;
+}
+
+
 /* MAIN SCREEN */
 
 .main-screen {

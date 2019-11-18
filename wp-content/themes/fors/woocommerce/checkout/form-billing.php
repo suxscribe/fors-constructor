@@ -48,10 +48,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?
 			}
 		?>
-	<!-- </div> <? // zrx close this in form-checkout.php ?> -->
+	</div> <? // zrx close this in form-checkout.php ?>
 
 	<?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
-<!-- </div> <? // zrx close this in form-checkout.php ?> -->
+</div> <? // zrx close this in form-checkout.php ?>
 
 <?php if ( ! is_user_logged_in() && $checkout->is_registration_enabled() ) : ?>
 	<div class="woocommerce-account-fields">
