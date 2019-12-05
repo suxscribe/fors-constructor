@@ -55,7 +55,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 									__( 'Remove this item', 'woocommerce' ),
 									esc_attr( $product_id ),
 									esc_attr( $_product->get_sku() )
-								), $cart_item_key ); //zrx
+								), $cart_item_key ); //zrx icon
 							?>
 						</td>
 
@@ -70,20 +70,29 @@ do_action( 'woocommerce_before_cart' ); ?>
 							printf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $thumbnail ); // PHPCS: XSS ok.
 						}
 						?>
-						</td> */ // zrx ?>
+						</td> */ // zrx hide image ?>
 
 						<td class="product-name" data-title="<?php esc_attr_e( 'Product', 'woocommerce' ); ?>">
 						<?php
 						if ( ! $product_permalink ) {
 							echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) . '&nbsp;' );
 						} else {
-							//echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $_product->get_name() ), $cart_item, $cart_item_key ) );
+							echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $_product->get_name() ), $cart_item, $cart_item_key ) ); //zrx hide product name
 						}
 
 						do_action( 'woocommerce_after_cart_item_name', $cart_item, $cart_item_key );
 
 						// Meta data.
 						echo wc_get_formatted_cart_item_data( $cart_item ); // PHPCS: XSS ok.
+
+						// echo "<pre>"; print_r($cart_item); echo "</pre>";
+						// echo $cart_item[wccpf_theurl][user_val];
+						// $product_params = str_replace($cart_item[wccpf_theurl][user_val], 'constructor.fors-official.com/?', '');
+						/*$product_params = preg_replace('/^(.*?)\\/\\?/', '', $cart_item[wccpf_theurl][user_val]);
+						echo $product_params;
+						parse_str($product_params, $product_params_array);
+						echo "<pre>"; print_r($product_params_array); echo "</pre>";*/ //zrx process options
+
 
 						// Backorder notification.
 						if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $cart_item['quantity'] ) ) {

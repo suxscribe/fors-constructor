@@ -123,9 +123,8 @@ show_admin_bar(false);
  * Enqueue scripts and styles.
  */
 function fors_scripts() {
-	wp_enqueue_style( 'uikit', get_template_directory_uri() . '/css/uikit.min.css', array());
+	wp_enqueue_style( 'uikit', get_template_directory_uri() . '/css/uikit.min.css?201912041', array());
 	wp_enqueue_style( 'micromodal', get_template_directory_uri() . '/css/micromodal.css', array());
-	// wp_enqueue_style( 'swiper', get_template_directory_uri() . '/css/swiper.min.css', array());
 	wp_enqueue_style( 'linearicons', get_template_directory_uri() . '/css/linearicons.min.css', array());
 
 	wp_enqueue_style( 'woocommerce-mod', get_template_directory_uri() . '/css/woocommerce.css', array());
@@ -133,7 +132,7 @@ function fors_scripts() {
 	// wp_enqueue_style( 'woocommerce-smallscreen-mod', get_template_directory_uri() . '/css/woocommerce-smallscreen.css', array());
 
 	wp_enqueue_style( 'fors-style', get_stylesheet_uri() );
-	wp_enqueue_style( 'custom', get_template_directory_uri() . '/css/custom.css?20191012', array());
+	wp_enqueue_style( 'custom', get_template_directory_uri() . '/css/custom.css?201912041', array());
 
 
 	wp_enqueue_script( 'fors-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20191010', true );
@@ -145,7 +144,7 @@ function fors_scripts() {
 
 	wp_enqueue_script( 'micromodal', get_template_directory_uri() . '/js/micromodal.min.js', array(), '20191010', true );
 	wp_enqueue_script( 'swiper', get_template_directory_uri() . '/js/swiper.min.js', array(), '20191010', true );
-	wp_enqueue_script( 'js', get_template_directory_uri() . '/js/js.js', array(), '20191010', true );
+	wp_enqueue_script( 'js', get_template_directory_uri() . '/js/js.js', array(), '201912049', true );
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -473,5 +472,96 @@ if ( ! function_exists( 'woocommerce_form_field' ) ) {
 		} else {
 			echo $field; // WPCS: XSS ok.
 		}
+	}
+}
+
+/*
+ * Добавляем часть формы к фрагменту
+ */
+// add_filter( 'woocommerce_update_order_review_fragments', 'awoohc_add_update_form_billing', 99 );
+function awoohc_add_update_form_billing( $fragments ) {
+
+	$checkout = WC()->checkout();
+	ob_start();
+
+	echo '<div class="woocommerce-billing-fields__field-wrapper uk-grid">';
+
+	$fields = $checkout->get_checkout_fields( 'billing' );
+	foreach ( $fields as $key => $field ) {
+		if ( isset( $field['country_field'], $fields[ $field['country_field'] ] ) ) {
+			$field['country'] = $checkout->get_value( $field['country_field'] );
+		}
+		woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+	}
+
+	echo '</div>';
+
+
+
+	$art_add_update_form_billing              = ob_get_clean();
+	$fragments['.woocommerce-billing-fields'] = $art_add_update_form_billing;
+
+	return $fragments;
+}
+
+/*
+ * Убираем поля для конкретного способа доставки
+ */
+// add_filter( 'woocommerce_checkout_fields', 'awoohc_override_checkout_fields' );
+function awoohc_override_checkout_fields( $fields ) {
+   // получаем выбранные метод доставки
+   $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+   // проверяем текущий метод и убираем не ненужные поля
+   if ( 'local_pickup:2' === $chosen_methods[0] ) {
+      unset( $fields['billing']['billing_company'] );
+      unset( $fields['billing']['billing_address_1'] );
+      unset( $fields['billing']['billing_address_2'] );
+      unset( $fields['billing']['billing_city'] );
+      unset( $fields['billing']['billing_postcode'] );
+      unset( $fields['billing']['billing_country'] );
+      unset( $fields['billing']['billing_state'] );
+      // unset( $fields['billing']['billing_phone'] );
+      // unset( $fields['billing']['billing_email'] );
+   }
+
+   return $fields;
+}
+
+
+// add_action( 'wp_footer', 'awoohc_add_script_update_shipping_method' );
+function awoohc_add_script_update_shipping_method() {
+	if ( is_checkout() ) {
+		?>
+<!--Выполняем обновление полей при переключении доставки-->
+		<script>
+            jQuery(document).ready(function ($) {
+
+                $(document.body).on('updated_checkout updated_shipping_method', function (event, xhr, data) {
+                    $('input[name^="shipping_method"]').on('change', function () {
+                        $('.woocommerce-billing-fields__field-wrapper').block({
+                            message: null,
+                            overlayCSS: {
+                                background: '#fff',
+                                'z-index': 1000000,
+                                opacity: 0.3
+                            }
+                        });
+                    });
+                    var first_name = $('#billing_first_name').val(),
+                        last_name = $('#billing_last_name').val(),
+                        phone = $('#billing_phone').val(),
+                        email = $('#billing_email').val();
+
+                    $(".woocommerce-billing-fields__field-wrapper").html(xhr.fragments[".woocommerce-billing-fields"]);
+                    $(".woocommerce-billing-fields__field-wrapper").find('input[name="billing_first_name"]').val(first_name);
+                    $(".woocommerce-billing-fields__field-wrapper").find('input[name="billing_last_name"]').val(last_name);
+                    $(".woocommerce-billing-fields__field-wrapper").find('input[name="billing_phone"]').val(phone);
+                    $(".woocommerce-billing-fields__field-wrapper").find('input[name="billing_email"]').val(email);
+                    $('.woocommerce-billing-fields__field-wrapper').unblock();
+                });
+            });
+
+		</script>
+		<?php
 	}
 }

@@ -474,20 +474,6 @@ li > ol {
 	margin-left: 1.5em;
 }
 
-dt {
-	font-weight: bold;
-}
-
-dd {
-	margin: 0 1.5em 1.5em;
-}
-
-img {
-	height: auto;
-	/* Make sure images are scaled correctly. */
-	max-width: 100%;
-	/* Adhere to container width. */
-}
 
 figure {
 	margin: 1em 0;
@@ -534,27 +520,7 @@ input[type="submit"]:focus {
 	border-color: #aaa #bbb #bbb;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"],
-input[type="number"],
-input[type="tel"],
-input[type="range"],
-input[type="date"],
-input[type="month"],
-input[type="week"],
-input[type="time"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="color"],
-textarea {
-	border: 1px solid #ccc;
-	height: 28px;
-	padding: 5px 10px ;
-	border-radius: 0 ;
-}
+
 
 input[type="text"]:focus,
 input[type="email"]:focus,

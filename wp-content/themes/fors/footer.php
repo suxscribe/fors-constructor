@@ -20,14 +20,16 @@ $options = get_option( 'theme_settings' );
 
             <div class="footer-grid uk-grid uk-child-width-1-2@m uk-child-width-1-1">
                 <div class="footer-contacts">
-                    <a href="tel:<? echo str_replace([' ', '(', ')', '-'], '', "{$options['phone']}")?>" class="uk-margin-right"><?echo "{$options['phone']}";?></a>
+                    <a href="tel:<? echo str_replace([' ', '(', ')', '-'], '', "{$options['phone']}")?>" class="footer-contacts__phone"><?echo "{$options['phone']}";?></a>
                     <a href="mailto:<?echo "{$options['email']}";?>"><?echo "{$options['email']}";?></a></div>
                 <div class="footer-socials">
                     <a href="<?echo "{$options['instagram']}";?>" class="header-social social social_instagram" target="_blank"></a>
                     <a href="<?echo "{$options['vk']}";?>" class="header-social social social_vk" target="_blank"></a>
               </div>
             </div>
-
+            <div class="footer-copyright">
+                © FORS 2019. <a class="footer-copyright__link" href="/privacy-policy">Политика обработки персональных данных</a>
+            </div>
 
 			<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-1') ) : ?>
 			    <?php endif; ?>
@@ -50,7 +52,7 @@ $options = get_option( 'theme_settings' );
                     ) );
                     ?>
                 <!-- </ul> -->
-                <li><a data-menuanchor="info" href="<?php echo esc_url( home_url( '/' ) ) ?>#info">Ценности</a></li>
+                <!-- <li><a data-menuanchor="info" href="<?php echo esc_url( home_url( '/' ) ) ?>#info">Ценности</a></li> -->
             </ul>
         </div>
         <div class="menu-modal-phone">

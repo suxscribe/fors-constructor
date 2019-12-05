@@ -304,7 +304,10 @@ jQuery(function(){
 		//console.log(jQuery(event.target).find('#calc-section-image').length);
 	});
 
-	$('.z-navbar-toggle').click(function(e){
+
+
+
+	jQuery('.z-navbar-toggle').click(function(e){
 	  var modal = UIkit.modal("#menu");
 
 	  // if ( modal.isActive() ) {
@@ -320,6 +323,30 @@ jQuery(function(){
 
 });
 
+
+
+// ANIMATIONS
+
+// burger menu animation
+  var delay = 0.6;
+  jQuery('#menu .uk-nav li').each(function() {
+  	jQuery(this).css({
+  		'transition-delay': delay+'s'
+
+  	});
+  	delay = delay + 0.05;
+  });
+
+  delay = 0.3;
+  jQuery('.section .product_frontpage').each(function() {
+  	jQuery(this).css({
+  		'animation-delay': delay+'s'
+  	});
+  	delay = delay + 0.05;
+
+  });
+
+//
 
 document.addEventListener('aos:in', ({ detail }) => {
   console.log('animated in', detail);
@@ -358,18 +385,104 @@ ScrollOut({
 
 
 
-$( document ).ready(function() {
+jQuery( document ).ready(function() {
 	// This prevents the elements with VH-based height to shrink on Android when keyboard opens. !!
 	setTimeout(function () {
-	    let viewheight = $(window).height();
-	    let viewwidth = $(window).width();
+	    let viewheight = jQuery(window).height();
+	    let viewwidth = jQuery(window).width();
 	    let viewport = document.querySelector("meta[name=viewport]");
 	    viewport.setAttribute("content", "height=" + viewheight + "px, width=" + viewwidth + "px, initial-scale=1.0");
 	}, 300);
 });
 
 
-jQuery(document).ready(function ($) {
+window.onresize = function() {
+		const sourceLeft = document.querySelector(".calc-section-wrap_left");
+		const sourceRight = document.querySelector(".calc-section-wrap_right");
+
+    if (window.innerWidth >= 639) {
+    	if (document.querySelector('#constructor-bar-controls-right .calc-section-wrap_right')) {
+	    	document.getElementById("calc-section-column-left").appendChild(sourceLeft);
+	    	document.getElementById("calc-section-column-right").appendChild(sourceRight);
+	    	//todo add close offcanvas
+    	}
+    } else {
+    	// if no element in destination  - move it to offcanvas
+    	if (!document.querySelector('#constructor-bar-controls-right .calc-section-wrap_right')) {
+    		// console.log(sourceRight);
+	    	document.getElementById("constructor-bar-controls-left").appendChild(sourceLeft);
+	    	document.getElementById("constructor-bar-controls-right").appendChild(sourceRight);
+
+    	}
+    }
+};
+
+
+
+/* PHONE */
+
+ 	var $input = $('input.input-text'); //, input[name=form_text_39], input[name=form_text_6]
+
+ 	var $form = $('form.checkout');
+ 	$input.each(function() {
+ 		$(this)
+ 				.removeAttr('required')
+ 				//.wrap("<div class='form-phone_wrap'></div>")
+ 				.parent('.uk-form-controls').addClass('form-phone_wrap')
+ 				.append( "<p class='form-phone_error'></p>" );
+ 	}); //.inputmask("+7 (999) 999-99-99",{autoclear: false, showMaskOnHover: false})
+ 	var errorTextNoPhone = "Заполните поле",
+ 		errorText = "Заполните поле";
+ 	$input.on('input',function(){
+ 		var $this = $(this);
+ 		if ( $this.val().substr($this.val().length - 1) !== "_" && $this.val().substr($this.val().length - 1) !== "" && $this.val().substr($this.val().length - 1) !== " ")
+ 			$this.addClass('succes');
+ 		else
+ 			$this.removeClass('succes');
+ 	});
+ 	$input.focusout(function() {
+ 		if($(this).val().length == 0) {
+ 			console.log('zero');
+ 			$(this)	.addClass('input-text_error-border')
+ 					.siblings('.form-phone_error')
+ 					.text(errorText);
+ 			$(this).parent().addClass('error');
+ 		}
+ 		if( $(this).val().length > 0 && !$(this).hasClass('succes') ){
+ 			$(this)	.addClass('input-text_error-border')
+ 					.siblings('.form-phone_error')
+ 					.text(errorText);
+ 			$(this).parent().addClass('error');
+ 		}
+ 	});
+ 	$input.keyup(function(e) {
+ 		$(this).siblings('.form-phone_error').text(' ');
+ 		$(this).removeClass('input-text_error-border')
+ 		.parent().removeClass('error');
+ 	});
+ 	$input.keyup(function(event){
+ 	    if(event.keyCode == 13){
+ 			$(this)	.addClass('input-text_error-border')
+ 					.siblings('.form-phone_error')
+ 					.text(errorText);
+
+ 	    }
+ 	});
+ 	$form.submit(function(){
+ 		if( !$(this).find($input).hasClass('succes')){
+ 			if( $(this).find($input).val().length == 0 )
+ 				$(this).find($input).addClass('input-text_error-border').siblings('.form-phone_error').text(errorTextNoPhone);
+ 			else
+ 				$(this).find($input).addClass('input-text_error-border').siblings('.form-phone_error').text(errorText);
+ 			return false;
+ 		}
+ 	});
+
+
+
+
+
+/*jQuery(document).ready(function ($) {
 
 	$(document.body).on('updated_checkout updated_shipping_method', function (event, xhr, data) {
 		$('input[name^="shipping_method"]').on('change', function () {
@@ -391,4 +504,4 @@ jQuery(document).ready(function ($) {
 		});
 	});
 
-});
+});*/

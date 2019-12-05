@@ -156,11 +156,6 @@
 	text-align: center;
 }
 
-.woocommerce div.product {
-	margin-bottom: 0;
-	position: relative;
-}
-
 .woocommerce div.product .product_title {
 	clear: none;
 	margin-top: 0;
@@ -1160,25 +1155,6 @@
 	display: inline-block;
 }
 
-.woocommerce td.product-name .wc-item-meta,.woocommerce td.product-name dl.variation {
-	list-style: none outside;
-}
-
-.woocommerce td.product-name .wc-item-meta .wc-item-meta-label,.woocommerce td.product-name .wc-item-meta dt,.woocommerce td.product-name dl.variation .wc-item-meta-label,.woocommerce td.product-name dl.variation dt {
-	float: left;
-	clear: both;
-	margin-right: .25em;
-	display: inline-block;
-	list-style: none outside;
-}
-
-.woocommerce td.product-name .wc-item-meta dd,.woocommerce td.product-name dl.variation dd {
-	margin: 0;
-}
-
-.woocommerce td.product-name .wc-item-meta p,.woocommerce td.product-name .wc-item-meta:last-child,.woocommerce td.product-name dl.variation p,.woocommerce td.product-name dl.variation:last-child {
-	margin-bottom: 0;
-}
 
 .woocommerce td.product-name p.backorder_notification {
 	font-size: .83em;

@@ -19,15 +19,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<dl class="variation">
+<?/*<dl class="variation">*/?>
 	<?php foreach ( $item_data as $data ) : ?>
 		<? if ($data['key'] == 'theurl') { ?>
-			<dt class="<?php echo sanitize_html_class( 'variation-theurl' ); ?>">Ваш бадлон:</dt>
-			<dd class="<?php echo sanitize_html_class( 'variation-theurl' ); ?>"><a href="http://<? echo $data['value']; ?>">Ссылка на ваш бадлон</a></dd>
+			<div class="product_variation">
+			<?/*<span class="product_variation-name <?php echo sanitize_html_class( 'variation-theurl' ); ?>">Ваш бадлон:</span>*/ ?>
+			<span class="product_variation-value <?php echo sanitize_html_class( 'variation-theurl' ); ?>"><a href="http://<? echo $data['value']; ?>">Ссылка на ваш кастом</a></span>
+			</div>
 			<? //print_r($data);?>
 		<? } else { ?>
-			<dt class="<?php echo sanitize_html_class( 'variation-' . $data['key'] ); ?>"><?php echo wp_kses_post( $data['key'] ); ?>:</dt>
-			<dd class="<?php echo sanitize_html_class( 'variation-' . $data['key'] ); ?>"><?php echo wp_kses_post( wpautop( $data['display'] ) ); ?></dd>
+			<div class="product_variation">
+			<span class="product_variation-name <?php echo sanitize_html_class( 'variation-' . $data['key'] ); ?>"><?php echo wp_kses_post( $data['key'] ); ?>:</span>
+			<span class="product_variation-value <?php echo sanitize_html_class( 'variation-' . $data['key'] ); ?>"><?php echo strip_tags(wp_kses_post( wpautop( $data['display'] ) )); ?></span>
+			</div>
 	<? } ?>
 	<?php endforeach; ?>
-</dl>
+<? /*</dl> */ ?>

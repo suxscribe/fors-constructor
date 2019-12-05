@@ -31,7 +31,7 @@ if ( post_password_required() ) {
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('product-detail'); ?>>
 
-	<div class="container product-detail_top ">
+	<div class="product-detail_top container  ">
 		<? //do_action( 'woocommerce_single_product_summary_mod' ); //zrx admin product field?>
 
 		<div class="main-screen">
@@ -70,7 +70,8 @@ if ( post_password_required() ) {
 
 
 
-	<div class="product-summary entry-summary product-detail_middle">
+	<div class="product-detail_middle product-summary entry-summary ">
+
 		<?php
 			/**
 			 * Hook: woocommerce_single_product_summary.
@@ -88,9 +89,17 @@ if ( post_password_required() ) {
 
 
 		?>
+		<div class="product-bar uk-hidden@s" >  <!-- uk-sticky="bottom:true;" -->
+			<div class="product-bar__inner">
+				<a class="product-bar__link" href="#" uk-toggle="target: #constructor-bar-left"><i uk-icon="chevron-left"></i>ЦВЕТ, РАЗМЕР</a>
+				<a class="product-bar__link" href="#" uk-toggle="target: #constructor-bar-right">НАДПИСЬ <i uk-icon="chevron-right"></i></a>
+			</div>
+		</div>
+
 		<calc>
 
 		</calc>
+
 		<div class="product-images-wrapper">
 			<?php
 				/**
@@ -102,9 +111,45 @@ if ( post_password_required() ) {
 				do_action( 'woocommerce_before_single_product_summary' );
 			?>
 		</div>
+
+
+
 	</div>
 
-	<div class="container product-detail_bottom margin-block margin-top block-bg-grey container-760">
+	<div id="constructor-bar-left" uk-offcanvas="mode: push; overlay: true;" class="constructor-offcanvas">
+		<div class="constructor-offcanvas__bar uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+        <h3>Выбери цвет и&nbsp;размер</h3>
+
+        <div id="constructor-bar-controls-left" class="product-constructor-bar__controls"></div>
+
+				<a href="#" class="constructor-offcanvas__close-button button-rounded uk-offcanvas-close">Готово</a>
+    </div>
+	</div>
+
+
+	<div id="constructor-bar-right" uk-offcanvas="mode: push; flip: true; overlay: true;" class="constructor-offcanvas">
+		<div class="constructor-offcanvas__bar uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+        <h3>Добавь надпись</h3>
+
+        <div id="constructor-bar-controls-right" class="product-constructor-bar__controls">
+        </div>
+
+        <a href="#" class="constructor-offcanvas__close-button button-rounded uk-offcanvas-close">Готово</a>
+
+    </div>
+	</div>
+
+
+
+
+
+	<div class="product-detail_bottom container margin-block margin-top block-bg-grey container-760">
 		<div class="block-content">
 			<div class="header-summary">
 				<? 	do_action( 'woocommerce_single_product_summary_bottom' ); //zrx ?>

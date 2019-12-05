@@ -277,10 +277,7 @@
 	width: 47%;
 }
 
-.woocommerce .cart-collaterals .cart_totals,.woocommerce-page .cart-collaterals .cart_totals {
-	float: right;
-	width: 48%;
-}
+
 
 .woocommerce ul.cart_list li::after,.woocommerce ul.cart_list li::before,.woocommerce ul.product_list_widget li::after,.woocommerce ul.product_list_widget li::before,.woocommerce-page ul.cart_list li::after,.woocommerce-page ul.cart_list li::before,.woocommerce-page ul.product_list_widget li::after,.woocommerce-page ul.product_list_widget li::before {
 	content: ' ';

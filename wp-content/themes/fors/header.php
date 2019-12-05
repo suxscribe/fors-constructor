@@ -37,7 +37,7 @@ $options = get_option( 'theme_settings' );
 
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'fors' ); ?></a>
 
-	<header class="header "  uk-sticky="media: @m">
+	<header class="header "  uk-sticky="media: @m" uk-scrollspy="cls:header_inview">
 		<div class="uk-container uk-container-expand">
 			<nav class="uk-navbar">
 				<div class="uk-navbar-left">
