@@ -18,7 +18,7 @@ $options = get_option( 'theme_settings' );
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-	<script src="https://unpkg.com/scroll-out/dist/scroll-out.min.js"></script>
+	<!-- <script src="https://unpkg.com/scroll-out/dist/scroll-out.min.js"></script> -->
 
 	<?php wp_head(); ?>
 
@@ -70,7 +70,7 @@ $options = get_option( 'theme_settings' );
 					<div class="uk-navbar-item header-phone uk-visible@s">
 						<a href="tel:<? echo str_replace([' ', '(', ')', '-'], '', "{$options['phone']}")?>"><?echo "{$options['phone']}";?></a>
 					</div>
-					<div class="uk-navbar-item header-socials">
+					<div class="uk-navbar-item header-socials uk-visible@s">
 						<a href="<?echo "{$options['instagram']}";?>" class="header-social social social_instagram" target="_blank"></a>
 						<a href="<?echo "{$options['vk']}";?>" class="header-social social social_vk"  target="_blank"></a>
 			    </div>

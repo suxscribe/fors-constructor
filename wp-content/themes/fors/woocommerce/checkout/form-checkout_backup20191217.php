@@ -38,9 +38,9 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 		<div class="checkout-shipping" id="customer_details">
 				<?php do_action( 'woocommerce_checkout_billing' ); ?>
 
-				<?php do_action( 'woocommerce_checkout_shipping' ); //zrx ?>
+				<?php //do_action( 'woocommerce_checkout_shipping' ); //zrx ?>
 
-				<!-- <div class="woocommerce-shipping-methods-wrap">
+				<div class="woocommerce-shipping-methods-wrap">
 				<h3 class="title-muted">Доставка</h3>
 
 				<?php /*if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
@@ -53,27 +53,26 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 				<?php endif; */ //zrx shipping part from review-order.php. Not working with ajax ?>
 
-				</div> -->
+				</div>
 
 				<!-- </div> -->
 				<!-- </div> <? // zrx closing divs from form-billing.php ?> -->
 
 		</div>
 
-	<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
-
 	<?php endif; ?>
 
 
 
 
+	<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
 
 	<h3 id="order_review_heading">Оплата<?php //esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
 
 	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
-	<div id="order_review" class="woocommerce-checkout-review-order" uk-scrollspy="repeat: true">
+	<div id="order_review" class="woocommerce-checkout-review-order">
 		<?php do_action( 'woocommerce_checkout_order_review' ); ?>
 	</div>
 

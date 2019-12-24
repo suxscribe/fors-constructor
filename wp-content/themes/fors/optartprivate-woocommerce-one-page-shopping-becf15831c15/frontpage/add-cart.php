@@ -15,7 +15,8 @@ if ( defined( 'OPS_POST_UPDATE' ) ) {
     ops_php_data['display_cart'] = true;
 </script>
 <section class="one-page-shopping-section" id="one-page-shopping-cart">
-    <h1 class="one-page-shopping-header" id="one-page-shopping-header">
+    <div class="cart_fixed">cart fixed</div>
+		<h1 class="one-page-shopping-header" id="one-page-shopping-header">
     	<?php _e( 'Checkout', 'woocommerce' ); ?>
     </h1>
     <div id="one-page-shopping-cart-content">

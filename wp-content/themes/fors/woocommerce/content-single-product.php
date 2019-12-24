@@ -91,8 +91,8 @@ if ( post_password_required() ) {
 		?>
 		<div class="product-bar uk-hidden@s" >  <!-- uk-sticky="bottom:true;" -->
 			<div class="product-bar__inner">
-				<a class="product-bar__link" href="#" uk-toggle="target: #constructor-bar-left"><i uk-icon="chevron-left"></i>ЦВЕТ, РАЗМЕР</a>
-				<a class="product-bar__link" href="#" uk-toggle="target: #constructor-bar-right">НАДПИСЬ <i uk-icon="chevron-right"></i></a>
+				<a class="product-bar__link product-bar__link_left" href="#" uk-toggle="target: #constructor-bar-left"><i uk-icon="chevron-left"></i>ЦВЕТ, РАЗМЕР</a>
+				<a class="product-bar__link product-bar__link_right" href="#" uk-toggle="target: #constructor-bar-right">НАДПИСЬ<i uk-icon="chevron-right"></i></a>
 			</div>
 		</div>
 

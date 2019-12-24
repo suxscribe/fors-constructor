@@ -19,7 +19,7 @@ add_action( 'woocommerce_checkout_after_customer_details', function () {
     /* global ops_php_data */
     ops_php_data['display_checkout'] = true;
 </script>
-<section class="one-page-shopping-section" id="one-page-shopping-checkout">
+<section class="one-page-shopping-section" id="one-page-shopping-checkout" uk-scrollspy>
     <!-- <h1 class="one-page-shopping-header" id="one-page-shopping-checkout-header">
         <?php _e( 'Checkout', 'woocommerce' ); ?>
     </h1> -->

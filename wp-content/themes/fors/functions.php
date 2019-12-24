@@ -90,6 +90,8 @@ add_action( 'after_setup_theme', 'fors_setup' );
  *
  * @global int $content_width
  */
+
+
 function fors_content_width() {
 	// This variable is intended to be overruled from themes.
 	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
@@ -103,6 +105,7 @@ add_action( 'after_setup_theme', 'fors_content_width', 0 );
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
+
 function fors_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer', 'fors' ),
@@ -124,7 +127,7 @@ show_admin_bar(false);
  */
 function fors_scripts() {
 	wp_enqueue_style( 'uikit', get_template_directory_uri() . '/css/uikit.min.css?201912041', array());
-	wp_enqueue_style( 'micromodal', get_template_directory_uri() . '/css/micromodal.css', array());
+	// wp_enqueue_style( 'micromodal', get_template_directory_uri() . '/css/micromodal.css', array());
 	wp_enqueue_style( 'linearicons', get_template_directory_uri() . '/css/linearicons.min.css', array());
 
 	wp_enqueue_style( 'woocommerce-mod', get_template_directory_uri() . '/css/woocommerce.css', array());
@@ -142,7 +145,7 @@ function fors_scripts() {
 	wp_enqueue_script( 'uikit', get_template_directory_uri() . '/js/uikit.min.js', array(), '20191010', true );
 	wp_enqueue_script( 'uikit-icons', get_template_directory_uri() . '/js/uikit-icons.min.js', array(), '20191010', true );
 
-	wp_enqueue_script( 'micromodal', get_template_directory_uri() . '/js/micromodal.min.js', array(), '20191010', true );
+	// wp_enqueue_script( 'micromodal', get_template_directory_uri() . '/js/micromodal.min.js', array(), '20191010', true );
 	wp_enqueue_script( 'swiper', get_template_directory_uri() . '/js/swiper.min.js', array(), '20191010', true );
 	wp_enqueue_script( 'js', get_template_directory_uri() . '/js/js.js', array(), '201912049', true );
 
@@ -475,6 +478,7 @@ if ( ! function_exists( 'woocommerce_form_field' ) ) {
 	}
 }
 
+
 /*
  * Добавляем часть формы к фрагменту
  */
@@ -565,3 +569,11 @@ function awoohc_add_script_update_shipping_method() {
 		<?php
 	}
 }
+
+
+
+// TEST CHECKOUT MOD
+
+
+remove_action( 'woocommerce_checkout_order_review', 'woocommerce_order_review', 10 );
+add_action( 'woocommerce_checkout_billing', 'woocommerce_order_review', 20 );

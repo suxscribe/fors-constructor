@@ -35,6 +35,31 @@ if ( ! is_ajax() ) {
 			?>
 		</ul>
 	<?php endif; ?>
+
+	<?php //wc_get_template( 'checkout/review-order.php' ); ?>
+
+<? /*
+	<div class="cart-total uk-flex-item-none uk-margin-bottom">
+		<? // TODO вывести краткий товар - название и опции / Вытащить из таблицы ?>
+
+		<div class="cart-total-wrap">
+			<div class="cart-total-title uk-h3">ТОВАРОВ НА СУММУ</div>
+			<div class="cart-total-value"><?php wc_cart_totals_subtotal_html(); ?></div>
+		</div>
+
+		<div class="cart-total-wrap">
+			<div class="cart-total-title uk-h3">ДОСТАВКА</div>
+			<div class="cart-total-value"><?php //wc_cart_shipping_total_html(); ?></div>
+		</div>
+
+		<div class="cart-total-wrap">
+			<div class="cart-total-title">ИТОГОВАЯ СУММА</div>
+			<div class="cart-total-value"><?php wc_cart_totals_order_total_html(); ?></div>
+		</div>
+	</div>
+	*/ ?>
+
+
 	<div class="form-row place-order">
 		<noscript>
 			<?php
@@ -48,7 +73,7 @@ if ( ! is_ajax() ) {
 
 		<?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 
-		<?php echo apply_filters( 'woocommerce_order_button_html', '<button type="submit" class="button-rounded button-primary alt" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . esc_html( $order_button_text ) . '</button>' ); // @codingStandardsIgnoreLine ?>
+		<?php echo apply_filters( 'woocommerce_order_button_html', '<button type="submit" class="button_place-order button-rounded button-primary alt" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '"  >' . esc_html( $order_button_text ) . '</button>' ); // @codingStandardsIgnoreLine ?>
 
 		<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
 

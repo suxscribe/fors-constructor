@@ -21,6 +21,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
+
+SDLK:JF:SDJFL:KJSD:FKLJSD:LKFJDSKLJFdj
+
 <div class="cart_totals <?php echo ( WC()->customer->has_calculated_shipping() ) ? 'calculated_shipping' : ''; ?>">
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>

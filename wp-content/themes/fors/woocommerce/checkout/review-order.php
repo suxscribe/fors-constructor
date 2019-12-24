@@ -21,16 +21,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <table class="shop_table woocommerce-checkout-review-order-table">
+	<? /*
 	<thead>
 		<tr>
 			<th class="product-name"><?php _e( 'Product', 'woocommerce' ); ?></th>
 			<th class="product-total"><?php _e( 'Total', 'woocommerce' ); ?></th>
 		</tr>
-	</thead>
-	<tbody>
+	</thead> */ //zrx  ?>
+	<!-- <tbody> -->
 		<?php
 			do_action( 'woocommerce_review_order_before_cart_contents' );
 
+			/*
 			foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 				$_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 
@@ -49,17 +51,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php
 				}
 			}
+			*/ //zrx disabled repeat of product list
 
 			do_action( 'woocommerce_review_order_after_cart_contents' );
 		?>
-	</tbody>
+	<!-- </tbody> -->
 	<tfoot>
 
-		<? /*
+
 		<tr class="cart-subtotal">
 			<th><?php _e( 'Subtotal', 'woocommerce' ); ?></th>
 			<td><?php wc_cart_totals_subtotal_html(); ?></td>
-		</tr>*/ ?>
+		</tr>
+
 
 		<?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
 			<tr class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
@@ -69,6 +73,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php endforeach; ?>
 
 		<? // zrx shipping was here ?>
+		<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
+
+			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
+
+			<?php wc_cart_totals_shipping_html(); ?>
+
+			<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
+
+		<?php endif; ?>
 
 		<?php foreach ( WC()->cart->get_fees() as $fee ) : ?>
 			<tr class="fee">
