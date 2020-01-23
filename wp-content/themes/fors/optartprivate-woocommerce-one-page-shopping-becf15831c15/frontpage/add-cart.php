@@ -16,8 +16,8 @@ if ( defined( 'OPS_POST_UPDATE' ) ) {
 </script>
 <section class="one-page-shopping-section" id="one-page-shopping-cart">
     <div class="cart_fixed">cart fixed</div>
-		<h1 class="one-page-shopping-header" id="one-page-shopping-header">
-    	<?php _e( 'Checkout', 'woocommerce' ); ?>
+    <h1 class="one-page-shopping-header" id="one-page-shopping-header">
+    <?php _e( 'Checkout', 'woocommerce' ); ?>
     </h1>
     <div id="one-page-shopping-cart-content">
         <?php require( 'cart.php' ); ?>

@@ -1,4 +1,4 @@
-<div id="calc-section-column-left" class="calc-section-column uk-visible@s">
+<div id="calc-section-column-left" class="calc-section-column uk-visible@s view ">
 	<div class="calc-section-wrap calc-section-wrap_left">
 		<section class="calc-section_ccolor" ccolor="">
 			<div class="calc-section-title">Цвет ткани</div>
@@ -40,7 +40,7 @@
 
 </div>
 
-<div id="calc-section-column-right" class="calc-section-column uk-visible@s">
+<div id="calc-section-column-right" class="calc-section-column uk-visible@s view ">
 	<div class="calc-section-wrap calc-section-wrap_right">
 
 
@@ -65,10 +65,14 @@
 		<section class="calc-section_font" font>
 			<div class="calc-section_font-title calc-section-title ">Шрифт</div>
 			<labels class="calc-section_font-controls calc-radio calc-fonts">
-				<label><input type="radio" name="font" data-value="Docker One" title="Docker One" val="docker-one" checked tabindex=6 /><span>Tt</span></label>
+				<!-- <label><input type="radio" name="font" data-value="Docker One" title="Docker One" val="docker-one" checked tabindex=6 /><span>Tt</span></label>
 				<label><input type="radio" name="font" data-value="Droid Serif" title="Droid Serif" val="droid-serif" /><span>Tt</span></label>
 				<label><input type="radio" name="font" data-value="Oranienbaum" title="Oranienbaum" val="oranienbaum" /><span>Tt</span></label>
-				<label><input type="radio" name="font" data-value="Roboto Regular" title="Roboto Regular" val="roboto-regular" /><span>Tt</span></label>
+				<label><input type="radio" name="font" data-value="Roboto Regular" title="Roboto Regular" val="roboto-regular" /><span>Tt</span></label> -->
+
+				<label><input type="radio" name="font" data-value="Comic Sans MS pixel" title="Comic Sans MS pixel" val="ComicSansMSpixel" checked tabindex=6 /><span>Tt</span></label>
+				<label><input type="radio" name="font" data-value="EFN Mac Style" title="EFN Mac Style" val="EFNMacStyle8px" /><span>Tt</span></label>
+				<label><input type="radio" name="font" data-value="VCR OSD Mono" title="VCR OSD Mono" val="VCROSDMono" /><span>Tt</span></label>
 			</labels>
 		</section>
 
@@ -77,8 +81,8 @@
 			<div class="calc-section-title">Цвет надписи</div>
 			<labels class="calc-radio calc-colors">
 				<label><input type="radio" name="fcolor" data-value="Пастельно-синий" val="#6A93B0" /><span></span><div>Пастельно-синий</div></label>
-				<label><input type="radio" name="fcolor" data-value="Бежево-серый" val="#756F61" /><span></span><div>Бежево-серый</div></label>
-				<label><input type="radio" name="fcolor" data-value="Жемчужно-белый" val="#E9E5CE" /><span></span><div>Жемчужно-белый</div></label>
+				<label><input type="radio" name="fcolor" data-value="Бежево-серый" val="#E9E5CE" /><span></span><div>Бежево-серый</div></label>
+				<label><input type="radio" name="fcolor" data-value="Жемчужно-белый" val="#756F61" /><span></span><div>Жемчужно-белый</div></label>
 				<label><input type="radio" name="fcolor" data-value="Зелёный" val="#0F4336" /><span></span><div>Зелёный</div></label>
 				<label><input type="radio" name="fcolor" data-value="Красный" val="#F70000" /><span></span><div>Красный</div></label>
 				<label><input type="radio" name="fcolor" data-value="Малиновый" val="#B42041" /><span></span><div>Малиновый</div></label>

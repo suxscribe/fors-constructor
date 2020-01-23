@@ -2,7 +2,7 @@ var getParams = new URL(window.location.href);
 
 //get params from url. set to 0 if not set
 var ucolor	= getParams.searchParams.get('ucolor') ? getParams.searchParams.get('ucolor') : "0";
-var utext0	= getParams.searchParams.get('utext0') ? getParams.searchParams.get('utext0') : ""; //TODO сделать надпись по умолчанию. но если юзер ее сотрет чтобы не появлялась снова при загрузке
+var utext0	= getParams.searchParams.get('utext0') ? getParams.searchParams.get('utext0') : "FORS"; //TODO сделать надпись по умолчанию. но если юзер ее сотрет чтобы не появлялась снова при загрузке
 var utext1	= getParams.searchParams.get('utext1') ? getParams.searchParams.get('utext1') : '';
 var ufcolor	= getParams.searchParams.get('ufcolor') ? getParams.searchParams.get('ufcolor') : "0";
 var ufont	= getParams.searchParams.get('ufont') ? getParams.searchParams.get('ufont') : "0";
@@ -65,6 +65,7 @@ function calc(){
 
 	// pass values to custom fields
 	jQuery('.single-product input[name=ff_color]').val(getDataValue('ccolor',ucolor));
+
 	// check if theres any type
 	jQuery('.single-product input[name=thesize]').val(getDataValue('size',usize));
 	if (utext0.length > 0 || utext1.length > 0) {
@@ -189,6 +190,14 @@ jQuery(function(){
 					calc();
 
 				});
+				jQuery('section[text] input').on('focusout',function(){
+					if ($(this).val().length === 0) {
+						$(this).val(' ');
+						updateText(this);
+						calc();
+					}
+
+				});
 
 				// change text color
 				jQuery('section[fcolor] label').click(function(){
@@ -213,7 +222,7 @@ jQuery(function(){
 					.css({'font-family': fontname})
 					.removeClass(function (index, css) {
 						return (css.match(/(^|\s)font\S+/g) || []).join(' ');
-						    }) // удаляем класс font-
+								}) // удаляем класс font-
 						.addClass('font-'+fontname); // добавляем новый шрифт
 
 						ufont = jQuery(this).index().toString();
@@ -257,26 +266,6 @@ jQuery(function(){
 	});
 
 
-	/*MicroModal.init({
-	  onShow: modal => console.info(`${modal.id} is shown`), // [1]
-	  onClose: modal => console.info(`${modal.id} is hidden`), // [2]
-	  // disableScroll: false, // [5]
-	  // disableFocus: false, // [6]
-	  awaitCloseAnimation: true, // [7]
-	  // debugMode: true // [8]
-	});*/
-
-
-	// jQuery(document).on('click', '.link_modal' , (e) => {
-	// 	e.preventDefault();
-	// 	// console.log('click');
-	// });
-	// jQuery(document).on('click', '#link_size-chart', (e) => {
-	// 	e.preventDefault();
-	// 	MicroModal.show('modal-size-chart'); // [1]
-	// });
-
-
 	// move product image block to calc
 	jQuery('#main .product-summary').on("DOMNodeInserted", function (event) {
 		if ((jQuery('#calc-section-image').length > 0) && (jQuery('#calc-section-image .product-images-wrapper').length < 1)) {
@@ -284,7 +273,6 @@ jQuery(function(){
 		}
 
 	});
-
 
 
 	// MOBILE MENU
@@ -299,15 +287,16 @@ jQuery(function(){
 	// Style color labels with colors of correspondent input labels
 	var colorLabels = document.querySelectorAll('.calc-colors span');
 
-	console.log(colorLabels);
+	// console.log(colorLabels);
 
 	colorLabels.forEach(e => {
-		console.log(e.previousSibling.getAttribute('val'));
+		// console.log(e.previousSibling.getAttribute('val'));
 	});
 
 	jQuery('.calc-colors span').each(function() {
 		jQuery(this).css('background-color', jQuery(this).prev().val());
 	});
+
 }); // load end
 
 
@@ -333,43 +322,6 @@ jQuery('.section .product_frontpage').each(function() {
 
 });
 
-//
-
-document.addEventListener('aos:in', ({ detail }) => {
-	console.log('animated in', detail);
-});
-
-document.addEventListener('aos:out', ({ detail }) => {
-	console.log('animated out', detail);
-});
-
-/*ScrollOut({
-  onShown: function(el, ctx) {
-     // Triggered when an element is shown
-     console.log('shown');
-     el.classList.add("visible");
-     // console.log(ctx);
-     if (el.classList.contains('calc-section-wrap')) {
-     	console.log('log');
-     	document.querySelectorAll('.main-screen__columns').classList.add('uk-hidden');
-     }
-   },
-   onHidden: function(el) {
-   	console.log('hidden');
-   	el.classList.remove("visible");
-
-   },
-   onChange: function(el) {
-   	console.log('change');
-   }
- });*/
-
-
-// $( document ).ready(function() {
-	//jQuery('.product-images-wrapper').appendTo('#calc-section-image');
-	// console.log($('#calc-section-image').length);
-// });
-
 
 
 jQuery( document ).ready(function() {
@@ -383,38 +335,102 @@ jQuery( document ).ready(function() {
 	}, 300);
 
 
-	jQuery('#one-page-shopping-checkout').on('UIkit.scrollspy.inview', function() {
-		console.log('inview');
-		jQuery('.cart_fixed').addClass('uk-hidden');
-	});
-	jQuery('#place_order').on('UIkit.scrollspy.outview', function() {
-		console.log('outview');
-		jQuery('.cart_fixed').removeClass('uk-hidden');
-	});
 
-	$(document).on('UIkit.scrollspy.inview', '#place_order', function(){
-		console.log('inview2');
-	    // what you want to happen when mouseover and mouseout
-	    // occurs on elements that match '.dosomething'
-	});
+	// CART ANIMATION
 
-	UIkit.util.on('#order_review', 'inview', function () {
-	    // do something
-	    console.log('inview 3');
-	    document.querySelector('.cart_fixed').classList.add('uk-hidden');
+	UIkit.util.on('#customer_details', 'inview', function () {
+			// do something
+			// console.log('inview 3');
+			document.querySelector('.cart_fixed').classList.add('cart_fixed_hidden');
 	});
-	UIkit.util.on('#order_review', 'outview', function () {
-	    // do something
-	    console.log('outview 3');
-	    document.querySelector('.cart_fixed').classList.remove('uk-hidden');
+	UIkit.util.on('#customer_details', 'outview', function () {
+			// do something
+			// console.log('outview 3');
+			document.querySelector('.cart_fixed').classList.remove('cart_fixed_hidden');
 
 	});
 
 	document.addEventListener('inview', function(e) {
-	  console.log(e.target);
+		// console.log(e.target);
 	});
 
-});
+
+	// MAin screen animation
+
+/*	UIkit.util.on('.main-screen__trigger', 'outview', function () {
+		// hide main screen blocks
+		document.querySelector('.main-screen__title').classList.add('view_hidden');
+		setTimeout(function() {
+			document.querySelector('.main-screen__left').classList.add('view_hidden');
+		}, 200);
+		setTimeout(function() {
+			document.querySelector('.main-screen__right').classList.add('view_hidden');
+		}, 400);
+
+		// show customizer
+		setTimeout(function() {
+			document.getElementById('calc-section-column-left').classList.remove('view_hidden-bottom');
+		}, 600);
+		setTimeout(function() {
+			document.getElementById('calc-section-column-right').classList.remove('view_hidden-bottom');
+		}, 800);
+
+	});
+
+	UIkit.util.on('.main-screen__trigger', 'inview', function () {
+		// show blocks on main screen
+		document.querySelector('.main-screen__title').classList.remove('view_hidden');
+		document.querySelector('.main-screen__left').classList.remove('view_hidden');
+		document.querySelector('.main-screen__right').classList.remove('view_hidden');
+
+		// hide customizer blocks
+		document.getElementById('calc-section-column-left').classList.add('view_hidden-bottom');
+		document.getElementById('calc-section-column-right').classList.add('view_hidden-bottom');
+	});*/
+
+
+	var isInViewport = function (elem) {
+			var bounding = elem.getBoundingClientRect();
+			return (
+					bounding.top >= 0 &&
+					bounding.left >= 0 &&
+					bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+					bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+			);
+	};
+
+	// check if main screen is in view on page load. if so - hide constructors
+	// constructor blocks not in DOM on page load (
+	var h1 = document.querySelector('.main-screen__trigger');
+	if (isInViewport(h1)) {
+			// document.getElementById('calc-section-column-left').classList.add('view_hidden-bottom');
+			// document.getElementById('calc-section-column-right').classList.add('view_hidden-bottom');
+	}
+
+
+	// GSAP ANIMATIONS
+
+	/*const tween = new TimelineLite();
+
+
+	tween.add(
+		TweenLite.to('.main-screen__left', 1, {left: '-100px'})
+	);
+
+	const controller = new ScrollMagic.Controller();
+
+	const scene = new ScrollMagic.Scene({
+		triggerElement: '.main-screen__columns',
+		duration: 3000,
+		triggerHook: 0.5 // trigger position 0- for top. 0.5 - center 1 - bottom
+	})
+	.setTween(tween)
+	.addIndicators()
+	.setPin('.main-screen__left')
+	.addTo(controller);*/
+
+
+}); // document.ready
 
 
 window.onresize = function() {
@@ -425,79 +441,80 @@ window.onresize = function() {
 		if (document.querySelector('#constructor-bar-controls-right .calc-section-wrap_right')) {
 			document.getElementById("calc-section-column-left").appendChild(sourceLeft);
 			document.getElementById("calc-section-column-right").appendChild(sourceRight);
-	    	//todo add close offcanvas
-	  }
-  } else {
-  	// if no element in destination  - move it to offcanvas
-  	if (!document.querySelector('#constructor-bar-controls-right .calc-section-wrap_right')) {
-  		// console.log(sourceRight);
-  		document.getElementById("constructor-bar-controls-left").appendChild(sourceLeft);
-  		document.getElementById("constructor-bar-controls-right").appendChild(sourceRight);
+				//todo add close offcanvas
+		}
+	} else {
+		// if no element in destination  - move it to offcanvas
+		if (!document.querySelector('#constructor-bar-controls-right .calc-section-wrap_right')) {
+			// console.log(sourceRight);
+			document.getElementById("constructor-bar-controls-left").appendChild(sourceLeft);
+			document.getElementById("constructor-bar-controls-right").appendChild(sourceRight);
 
-  	}
-  }
+		}
+	}
 };
 
 
 
-  /* PHONE */
 
- 	var $input = jQuery('input.input-text'); //, input[name=form_text_39], input[name=form_text_6]
+	/* PHONE */
 
- 	var $form = jQuery('form.checkout');
- 	$input.each(function() {
- 		jQuery(this)
- 		.removeAttr('required')
- 				//.wrap("<div class='form-phone_wrap'></div>")
- 				.parent('.uk-form-controls').addClass('form-phone_wrap')
- 				.append( "<p class='form-phone_error'></p>" );
- 	}); //.inputmask("+7 (999) 999-99-99",{autoclear: false, showMaskOnHover: false})
- 	var errorTextNoPhone = "Заполните поле",
- 	errorText = "Заполните поле";
- 	$input.on('input',function(){
- 		var $this = jQuery(this);
- 		if ( $this.val().substr($this.val().length - 1) !== "_" && $this.val().substr($this.val().length - 1) !== "" && $this.val().substr($this.val().length - 1) !== " ")
- 			$this.addClass('succes');
- 		else
- 			$this.removeClass('succes');
- 	});
- 	$input.focusout(function() {
- 		if(jQuery(this).val().length == 0) {
- 			console.log('zero');
- 			jQuery(this)	.addClass('input-text_error-border')
- 			.siblings('.form-phone_error')
- 			.text(errorText);
- 			jQuery(this).parent().addClass('error');
- 		}
- 		if( jQuery(this).val().length > 0 && !jQuery(this).hasClass('succes') ){
- 			jQuery(this)	.addClass('input-text_error-border')
- 			.siblings('.form-phone_error')
- 			.text(errorText);
- 			jQuery(this).parent().addClass('error');
- 		}
- 	});
- 	$input.keyup(function(e) {
- 		jQuery(this).siblings('.form-phone_error').text(' ');
- 		jQuery(this).removeClass('input-text_error-border')
- 		.parent().removeClass('error');
- 	});
- 	$input.keyup(function(event){
- 		if(event.keyCode == 13){
- 			jQuery(this)	.addClass('input-text_error-border')
- 			.siblings('.form-phone_error')
- 			.text(errorText);
+	var $input = jQuery('input.input-text'); //, input[name=form_text_39], input[name=form_text_6]
 
- 		}
- 	});
- 	$form.submit(function(){
- 		if( !jQuery(this).find($input).hasClass('succes')){
- 			if( jQuery(this).find($input).val().length == 0 )
- 				jQuery(this).find($input).addClass('input-text_error-border').siblings('.form-phone_error').text(errorTextNoPhone);
- 			else
- 				jQuery(this).find($input).addClass('input-text_error-border').siblings('.form-phone_error').text(errorText);
- 			return false;
- 		}
- 	});
+	var $form = jQuery('form.checkout');
+	$input.each(function() {
+		jQuery(this)
+		.removeAttr('required')
+				//.wrap("<div class='form-phone_wrap'></div>")
+				.parent('.uk-form-controls').addClass('form-phone_wrap')
+				.append( "<p class='form-phone_error'></p>" );
+	}); //.inputmask("+7 (999) 999-99-99",{autoclear: false, showMaskOnHover: false})
+	var errorTextNoPhone = "Заполните поле",
+	errorText = "Заполните поле";
+	$input.on('input',function(){
+		var $this = jQuery(this);
+		if ( $this.val().substr($this.val().length - 1) !== "_" && $this.val().substr($this.val().length - 1) !== "" && $this.val().substr($this.val().length - 1) !== " ")
+			$this.addClass('succes');
+		else
+			$this.removeClass('succes');
+	});
+	$input.focusout(function() {
+		if(jQuery(this).val().length == 0) {
+			// console.log('zero');
+			jQuery(this)	.addClass('input-text_error-border')
+			.siblings('.form-phone_error')
+			.text(errorText);
+			jQuery(this).parent().addClass('error');
+		}
+		if( jQuery(this).val().length > 0 && !jQuery(this).hasClass('succes') ){
+			jQuery(this)	.addClass('input-text_error-border')
+			.siblings('.form-phone_error')
+			.text(errorText);
+			jQuery(this).parent().addClass('error');
+		}
+	});
+	$input.keyup(function(e) {
+		jQuery(this).siblings('.form-phone_error').text(' ');
+		jQuery(this).removeClass('input-text_error-border')
+		.parent().removeClass('error');
+	});
+	$input.keyup(function(event){
+		if(event.keyCode == 13){
+			jQuery(this)	.addClass('input-text_error-border')
+			.siblings('.form-phone_error')
+			.text(errorText);
+
+		}
+	});
+	$form.submit(function(){
+		if( !jQuery(this).find($input).hasClass('succes')){
+			if( jQuery(this).find($input).val().length == 0 )
+				jQuery(this).find($input).addClass('input-text_error-border').siblings('.form-phone_error').text(errorTextNoPhone);
+			else
+				jQuery(this).find($input).addClass('input-text_error-border').siblings('.form-phone_error').text(errorText);
+			return false;
+		}
+	});
 
 
 

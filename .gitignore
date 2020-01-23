@@ -1,5 +1,7 @@
 /wp-content/plugins
 /wp-plugins/supro
+/.vscode
 sftp-config.json
+fors-constructor.code-workspace
 fors-constructor.sublime-workspace
 fors-constructor.sublime-project

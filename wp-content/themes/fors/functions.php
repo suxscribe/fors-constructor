@@ -138,14 +138,24 @@ function fors_scripts() {
 	wp_enqueue_style( 'custom', get_template_directory_uri() . '/css/custom.css?201912041', array());
 
 
-	wp_enqueue_script( 'fors-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20191010', true );
+	wp_enqueue_script( 'fors-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20191010', true ); // todo what for?
 
-	wp_enqueue_script( 'fors-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20191010', true );
+	wp_enqueue_script( 'fors-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20191010', true ); // to do what for?
 
 	wp_enqueue_script( 'uikit', get_template_directory_uri() . '/js/uikit.min.js', array(), '20191010', true );
 	wp_enqueue_script( 'uikit-icons', get_template_directory_uri() . '/js/uikit-icons.min.js', array(), '20191010', true );
 
 	// wp_enqueue_script( 'micromodal', get_template_directory_uri() . '/js/micromodal.min.js', array(), '20191010', true );
+
+	wp_enqueue_script( 'scrollmagic', get_template_directory_uri() . '/js/ScrollMagic.min.js', array(), '20191010', true );
+	wp_enqueue_script( 'debug.addIndicators', get_template_directory_uri() . '/js/debug.addIndicators.min.js', array(), '20191010', true );
+	wp_enqueue_script( 'animation.gsap', get_template_directory_uri() . '/js/animation.gsap.min.js', array(), '20191010', true );
+	wp_enqueue_script( 'TweenLite', get_template_directory_uri() . '/js/TweenLite.min.js', array(), '20191010', true );
+	wp_enqueue_script( 'TimelineLite', get_template_directory_uri() . '/js/TimelineLite.min.js', array(), '20191010', true );
+	wp_enqueue_script( 'CSSPlugin', get_template_directory_uri() . '/js/CSSPlugin.min.js', array(), '20191010', true );
+
+
+
 	wp_enqueue_script( 'swiper', get_template_directory_uri() . '/js/swiper.min.js', array(), '20191010', true );
 	wp_enqueue_script( 'js', get_template_directory_uri() . '/js/js.js', array(), '201912049', true );
 
@@ -577,3 +587,29 @@ function awoohc_add_script_update_shipping_method() {
 
 remove_action( 'woocommerce_checkout_order_review', 'woocommerce_order_review', 10 );
 add_action( 'woocommerce_checkout_billing', 'woocommerce_order_review', 20 );
+
+
+// MENU ATTRS
+
+// UK SCROLL MENU LINKS
+add_filter( 'nav_menu_link_attributes', function ( $atts, $item, $args ) {
+    if ( $item->classes[0] === 'product-scroll' ) {
+        $atts['uk-scroll'] = 'offset: 300; duration: 200';
+    }
+
+    return $atts;
+}, 10, 3 );
+add_filter( 'nav_menu_link_attributes', function ( $atts, $item, $args ) {
+    if ( $item->classes[0] === 'feedback-scroll' ) {
+        $atts['uk-scroll'] = 'offset: 100; duration: 200';
+    }
+
+    return $atts;
+}, 10, 3 );
+add_filter( 'nav_menu_link_attributes', function ( $atts, $item, $args ) {
+    if ( $item->classes[0] === 'payment-scroll' ) {
+        $atts['uk-scroll'] = 'offset: 100; duration: 200';
+    }
+
+    return $atts;
+}, 10, 3 );
