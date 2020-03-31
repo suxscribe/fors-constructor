@@ -35,21 +35,54 @@ $wrapper_classes   = apply_filters( 'woocommerce_single_product_image_gallery_cl
 ?>
 
 <div class="product-images-slideshow" uk-slideshow="animation: fade; ratio: 1000:1549">
-    <ul class="uk-slideshow-items">
+  <ul class="uk-slideshow-items">
 		<?php
-		if ( $product->get_image_id() ) {
-			$html = wc_get_gallery_image_html( $post_thumbnail_id, true );
-		} else {
-			$html  = '<div class="woocommerce-product-gallery__image--placeholder">';
-			$html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
-			$html .= '</div>';
-		}
+		// OLD IMAGE GALLERY CODE //zrx
+		// if ( $product->get_image_id() ) {
+		// 	$html = wc_get_gallery_image_html( $post_thumbnail_id, true );
+		// } else {
+		// 	$html  = '<div class="woocommerce-product-gallery__image--placeholder">';
+		// 	$html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
+		// 	$html .= '</div>';
+		// }
 
-		echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
-		add_filter( 'woocommerce_gallery_thumbnail_size', function( $size ) {
-		return 'full'; //zrx full size instead of thumbnails
-		} );
-		do_action( 'woocommerce_product_thumbnails' );
+		// echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+
+		// add_filter( 'woocommerce_gallery_thumbnail_size', function( $size ) {
+		// return 'full'; //zrx full size instead of thumbnails
+		// });
+
+		// do_action( 'woocommerce_product_thumbnails' );
 		?>
-	    </ul>
-	</div>
+
+		<?php
+
+		// show product images
+
+		$attachment_ids = $product->get_gallery_image_ids();
+
+		foreach( $attachment_ids as $attachment_id ) {
+      // Display the image URL
+      //echo $Original_image_url = wp_get_attachment_url( $attachment_id ); ?>
+      <div class="woocommerce-product-gallery__image ">
+      	<? // Display Image with lazyload
+      	echo wp_get_attachment_image($attachment_id, 'full', false, array(
+      		'src' => '',
+  		    'srcset' => '/',
+  		    'uk-img' => 'dataSrcset:'.wp_get_attachment_image_srcset( $attachment_id, 'full' ),
+
+      	));
+      	// 'data-flickity-lazyload-srcset' => wp_get_attachment_image_srcset( $attachment_id, 'full' ),
+      	// wp_get_attachment_image_url( $attachment_id, 'full' )
+      	//  ?>
+      </div>
+    <? } ?>
+  </ul>
+
+</div>
+
+
+
+
+
+

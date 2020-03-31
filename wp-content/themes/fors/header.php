@@ -37,13 +37,13 @@ $options = get_option( 'theme_settings' );
 
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'fors' ); ?></a>
 
-	<header class="header "  uk-sticky="media: @m" uk-scrollspy="cls:header_inview">
+	<header class="header " uk-scrollspy="cls:header_inview">
 		<div class="uk-container uk-container-expand">
 			<nav class="uk-navbar">
 				<div class="uk-navbar-left">
 					<?php
 					the_custom_logo();
-					if ( is_front_page() && is_home() ) :
+					if ( is_front_page() ) :
 						?>
 						<div class="uk-navbar-item uk-logo" rel="home">
 							<img src="<?=get_template_directory_uri()?>/images/logo.svg" alt="" width="80">
@@ -61,11 +61,20 @@ $options = get_option( 'theme_settings' );
 				<div class="uk-navbar-right">
 
 					<?php
+					if ( is_front_page() ) {
 					wp_nav_menu( array(
 						'theme_location' => 'menu-1',
 						'menu_id'        => 'primary-menu',
 						'menu_class'		=> 'header__navbar uk-visible@m'
 					) );
+					} else {
+						wp_nav_menu( array(
+							'theme_location' => 'menu-2',
+							'menu_id'        => 'secondary-menu',
+							'menu_class'		=> 'header__navbar uk-visible@m'
+						) );
+					}
+
 					?>
 					<div class="uk-navbar-item header-phone uk-visible@s">
 						<a href="tel:<? echo str_replace([' ', '(', ')', '-'], '', "{$options['phone']}")?>"><?echo "{$options['phone']}";?></a>
@@ -86,4 +95,4 @@ $options = get_option( 'theme_settings' );
 	    <a href="#menu" class=" z-navbar-toggle"><span></span></a>
 	</div>
 
-	<div id="content" class="site-content uk-container">
+	<div id="content" class="site-content">

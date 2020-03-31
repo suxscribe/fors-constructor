@@ -1,0 +1,34 @@
+<section class="calc-section_ccolor" ccolor="">
+	<div class="calc-section-title">Цвет пряжи</div>
+	<labels class="calc-radio calc-colors" tabindex="1">
+		<label class="calc-color-e9e5ce"><input type="radio" name="ccolor" data-value="Жемчужно-белый" val="2" /><span></span><div>Жемчужно-белый</div></label>
+		<label class="calc-color-f3e03b"><input type="radio" name="ccolor" data-value="Цинково-жёлтый" val="13" checked="checked" /><span></span><div>Цинково-жёлтый</div></label>
+		<label class="calc-color-756f61"><input type="radio" name="ccolor" data-value="Бежево-серый" val="1"/><span></span><div>Бежево-серый</div></label>
+		<label class="calc-color-0f4336"><input type="radio" name="ccolor" data-value="Зелёный" val="3"/><span></span><div>Зелёный</div></label>
+		<label class="calc-color-f70000"><input type="radio" name="ccolor" data-value="Красный" val="4"/><span></span><div>Красный</div></label>
+		<label class="calc-color-b42041"><input type="radio" name="ccolor" data-value="Малиновый" val="5"/><span></span><div>Малиновый</div></label>
+		<label class="calc-color-478a84"><input type="radio" name="ccolor" data-value="Мятно-бирюзовый" val="6"/><span></span><div>Мятно-бирюзовый</div></label>
+		<label class="calc-color-e75b12"><input type="radio" name="ccolor" data-value="Оранжевый" val="7"/><span></span><div>Оранжевый</div></label>
+		<label class="calc-color-6a93b0"><input type="radio" name="ccolor" data-value="Пастельно-синий" val="8"/><span></span><div>Пастельно-синий</div></label>
+		<label class="calc-color-e1a6ad"><input type="radio" name="ccolor" data-value="Светло-розовый" val="9"/><span></span><div>Светло-розовый</div></label>
+		<label class="calc-color-d47479"><input type="radio" name="ccolor" data-value="Розовый антик" val="10"/><span></span><div>Розовый антик</div></label>
+		<label class="calc-color-154889"><input type="radio" name="ccolor" data-value="Синий" val="11"/><span></span><div>Синий</div></label>
+		<label class="calc-color-232c3f"><input type="radio" name="ccolor" data-value="Темно-синий" val="12"/><span></span><div>Темно-синий</div></label>
+
+		<label class="calc-color-0a0a0d"><input type="radio" name="ccolor" data-value="Чёрный янтарь" val="14"/><span></span><div>Чёрный янтарь</div></label>
+	</labels>
+</section>
+<section class="calc-section_size" size="">
+	<div class="calc-section-title">Размер бадлона </div>
+	<labels class="calc-radio calc-size" >
+		<label><input type="radio" name="size" data-value="XS" val="XS" checked="checked" tabindex="2" /><span>XS</span></label>
+		<label><input type="radio" name="size" data-value="S" val="S" /><span>S</span></label>
+		<label><input type="radio" name="size" data-value="M" val="M" /><span>M</span></label>
+		<label><input type="radio" name="size" data-value="L" val="L" /><span>L</span></label>
+
+	</labels>
+	<div class="calc-section-text">
+		<a id="link_size-chart" class="link_size-chart link_modal" href="#modal-size-chart" uk-toggle>Таблица размеров</a>
+	</div>
+
+</section>

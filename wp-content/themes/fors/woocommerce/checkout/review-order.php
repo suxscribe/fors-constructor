@@ -56,7 +56,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 			do_action( 'woocommerce_review_order_after_cart_contents' );
 		?>
 	<!-- </tbody> -->
-	<div>
 
 
 		<? /*<tr class="cart-subtotal">
@@ -109,11 +108,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
 
 		<div class="order-total">
-			<span><?php _e( 'Total', 'woocommerce' ); ?></span>
+			<span class="orger-total__label">Сумма заказа: </span>
 			<span><?php wc_cart_totals_order_total_html(); ?></span>
 		</div>
 
 		<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
 
-	</div>
 </div>

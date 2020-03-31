@@ -1,0 +1,53 @@
+<div class="calc-section-row">
+	<div class="calc-section-title ">Надпись</div>
+
+	<section class="calc-section_align" pos>
+		<labels class="calc-radio calc-align" >
+			<label><input type="radio" name="pos" data-value="Надпись по центру" checked tabindex=5 /><span class="text-align text-align__center"  title="Текст по центру"></span></label>
+			<label><input type="radio" name="pos" data-value="Надпись слева" /><span class="text-align text-align__right"  title="Текст слева"></span></label>
+		</labels>
+	</section>
+</div>
+
+<section class="calc-section_text" text>
+	<labels class="calc-text" >
+		<label><input type="search" name="text0" maxlength="12" placeholder="Первая строка" tabindex=3 /><span></span></label>
+		<label><input type="search" name="text1" maxlength="12" placeholder="Вторая строка" tabindex=4 /><span></span></label>
+	</labels>
+</section>
+
+<section class="calc-section_font" font>
+	<div class="calc-section_font-title calc-section-title ">Шрифт</div>
+	<labels class="calc-section_font-controls calc-radio calc-fonts">
+		<!-- <label><input type="radio" name="font" data-value="Docker One" title="Docker One" val="docker-one" checked tabindex=6 /><span>Tt</span></label> -->
+		<!-- <label><input type="radio" name="font" data-value="Droid Serif" title="Droid Serif" val="droid-serif" /><span>Tt</span></label> -->
+		<label><input type="radio" name="font" data-value="Circe" title="Circe" val="circe" /><span>Tt</span></label>
+		<label><input type="radio" name="font" data-value="Oranienbaum" title="Oranienbaum" val="oranienbaum" /><span>Tt</span></label>
+		<label><input type="radio" name="font" data-value="Roboto Regular" title="Roboto Regular" val="roboto-regular" /><span>Tt</span></label>
+
+		<!-- <label><input type="radio" name="font" data-value="Comic Sans MS pixel" title="Comic Sans MS pixel" val="ComicSansMSpixel" checked tabindex=6 /><span>Tt</span></label>
+		<label><input type="radio" name="font" data-value="EFN Mac Style" title="EFN Mac Style" val="EFNMacStyle8px" /><span>Tt</span></label>
+		<label><input type="radio" name="font" data-value="VCR OSD Mono" title="VCR OSD Mono" val="VCROSDMono" /><span>Tt</span></label> -->
+	</labels>
+</section>
+
+
+<section class="calc-secton_fcolor" fcolor>
+	<div class="calc-section-title">Цвет надписи</div>
+	<labels class="calc-radio calc-colors">
+		<label class="calc-color-f70000"><input type="radio" name="fcolor" data-value="Красный" val="#F70000" /><span></span><div>Красный</div></label>
+		<label class="calc-color-6a93b0"><input type="radio" name="fcolor" data-value="Пастельно-синий" val="#6A93B0" /><span></span><div>Пастельно-синий</div></label>
+		<label class="calc-color-e9e5ce"><input type="radio" name="fcolor" data-value="Бежево-серый" val="#E9E5CE" /><span></span><div>Бежево-серый</div></label>
+		<label class="calc-color-756f61"><input type="radio" name="fcolor" data-value="Жемчужно-белый" val="#f9f8f3" /><span></span><div>Жемчужно-белый</div></label>
+		<label class="calc-color-0f4336"><input type="radio" name="fcolor" data-value="Зелёный" val="#0F4336" /><span></span><div>Зелёный</div></label>
+		<label class="calc-color-b42041"><input type="radio" name="fcolor" data-value="Малиновый" val="#B42041" /><span></span><div>Малиновый</div></label>
+		<label class="calc-color-478a84"><input type="radio" name="fcolor" data-value="Мятно-бирюзовый" val="#478A84" /><span></span><div>Мятно-бирюзовый</div></label>
+		<label class="calc-color-e75b12"><input type="radio" name="fcolor" data-value="Оранжевый" val="#E75B12" /><span></span><div>Оранжевый</div></label>
+		<label class="calc-color-d47479"><input type="radio" name="fcolor" data-value="Розовый антик" val="#D47479" /><span></span><div>Розовый антик</div></label>
+		<label class="calc-color-e1a6ad"><input type="radio" name="fcolor" data-value="Светло-розовый" val="#E1A6AD" /><span></span><div>Светло-розовый</div></label>
+		<label class="calc-color-154889"><input type="radio" name="fcolor" data-value="Синий" val="#154889" /><span></span><div>Синий</div></label>
+		<label class="calc-color-232c3f"><input type="radio" name="fcolor" data-value="Темно-синий" val="#232C3F" /><span></span><div>Темно-синий</div></label>
+		<label class="calc-color-f3e03b"><input type="radio" name="fcolor" data-value="Цинково-жёлтый" val="#F3E03B" /><span></span><div>Цинково-жёлтый</div></label>
+		<label class="calc-color-0a0a0d"><input type="radio" name="fcolor" data-value="Чёрный янтарь" val="#0A0A0D" /><span></span><div>Чёрный янтарь</div></label>
+	</labels>
+</section>

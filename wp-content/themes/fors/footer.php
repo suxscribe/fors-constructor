@@ -18,7 +18,7 @@ $options = get_option( 'theme_settings' );
 	<footer id="colophon" class="">
 		<div class="uk-container">
 
-            <div class="footer-grid uk-grid uk-child-width-1-2@m uk-child-width-1-1">
+            <div class="footer-grid ">
                 <div class="footer-contacts">
                     <a href="tel:<? echo str_replace([' ', '(', ')', '-'], '', "{$options['phone']}")?>" class="footer-contacts__phone"><?echo "{$options['phone']}";?></a>
                     <a href="mailto:<?echo "{$options['email']}";?>"><?echo "{$options['email']}";?></a></div>
@@ -65,6 +65,9 @@ $options = get_option( 'theme_settings' );
         </div>
     </div>
 </div>
+
+
+
 
 <?php wp_footer(); ?>
 
